@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2010-07-15/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<Commands package="guidYourPackageGuid">
+		<Menus>
+			<Menu guid="guidClassContextCmdSet" id="ClassContextMenu" priority="0x0100" type="Context">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN"/>
+				<Strings>
+					<ButtonText>Mein Klassen-Menü</ButtonText>
+				</Strings>
+			</Menu>
+			<Menu guid="guidSolutionExplorerContextCmdSet" id="SolutionExplorerContextMenu" priority="0x0100" type="Context">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
+				<Strings>
+					<ButtonText>Mein Solution Explorer-Menü</ButtonText>
+				</Strings>
+			</Menu>
+		</Menus>
+		<Groups>
+			<Group guid="guidClassContextCmdSet" id="ClassContextMenuGroup" priority="0x0100">
+				<Parent guid="guidClassContextCmdSet" id="ClassContextMenu"/>
+			</Group>
+			<Group guid="guidSolutionExplorerContextCmdSet" id="SolutionExplorerContextMenuGroup" priority="0x0100">
+				<Parent guid="guidSolutionExplorerContextCmdSet" id="SolutionExplorerContextMenu"/>
+			</Group>
+		</Groups>
+		<Buttons>
+			<Button guid="guidClassContextCmdSet" id="MeinKlassenMenüItem" priority="0x0100" type="Button">
+				<Parent guid="guidClassContextCmdSet" id="ClassContextMenuGroup"/>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<ButtonText>Mein Klassen-Menü Item</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidSolutionExplorerContextCmdSet" id="MeinSolutionExplorerMenüItem" priority="0x0100" type="Button">
+				<Parent guid="guidSolutionExplorerContextCmdSet" id="SolutionExplorerContextMenuGroup"/>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<ButtonText>Mein Solution Explorer-Menü Item</ButtonText>
+				</Strings>
+			</Button>
+		</Buttons>
+		<Symbols>
+			<GuidSymbol name="guidYourPackageGuid" value="c0777b53-8f51-41c6-8f05-fbe374160b39"/>
+			<GuidSymbol name="guidClassContextCmdSet" value="{e343d2ef-7e22-4f84-ab26-78b0ec001447}"/>
+			<GuidSymbol name="guidSolutionExplorerContextCmdSet" value="{cf98a944-9061-4053-9923-9b49ef4a096d}"/>
+		</Symbols>
+	</Commands>
+</CommandTable>
