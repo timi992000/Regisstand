@@ -5,22 +5,12 @@
 	<Commands package="guidRegisstandWindowPackage">
 		<Buttons>
 			<Button guid="guidRegisstandCmdSet" id="RegisstandWindowCommandId" priority="0x0100" type="Button">
-				<Parent guid="guidRegisstandCmdMenu" id="Menu" />
+				<Parent guid="guidRegisstandCmdSet" id="MyContextMenuItemEditorGroup" />
 				<Strings>
 					<ButtonText>Surround members with regions</ButtonText>
-					<CommandName></CommandName>
 				</Strings>
 			</Button>
 		</Buttons>
-
-		<Menus>
-			<Menu guid="guidRegisstandCmdMenu" id="Menu" priority="0x0100" type="Menu">
-				<Parent guid="guidRegisstandCmdSet" id="MyContextMenuItemEditorGroup" />
-				<Strings>
-					<ButtonText>Timos Code Manager</ButtonText>
-				</Strings>
-			</Menu>
-		</Menus>
 
 		<Groups>
 			<Group guid="guidRegisstandCmdSet" id="MyContextMenuSolutionNodeGroup" priority="0x0600">

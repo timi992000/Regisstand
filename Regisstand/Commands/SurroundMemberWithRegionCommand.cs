@@ -82,13 +82,15 @@ namespace Regisstand.Commands
     private void __GenerateCodeElementRegion(CodeElement codeElement)
     {
       TextPoint start = codeElement.StartPoint;
+      var startTabPosition = start.DisplayColumn - 1;
       TextPoint end = codeElement.EndPoint;
+      var endTabPosition = end.DisplayColumn - 2;
 
       EditPoint startPoint = start.CreateEditPoint();
       EditPoint endPoint = end.CreateEditPoint();
 
-      startPoint.Insert($"#region [{codeElement.Name}]\n");
-      endPoint.Insert("\n#endregion\n");
+      startPoint.Insert($"#region [{codeElement.Name}]\n{new string(' ', startTabPosition)}");
+      endPoint.Insert($"\n{new string(' ', endTabPosition)}#endregion");
     }
 
     private void __SurroundAllProperties()
