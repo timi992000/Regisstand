@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.Shell;
+using Regisstand.Commands;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -28,7 +29,7 @@ namespace Regisstand
 	[ProvideBindingPath]
 	[InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this Package for Help/About
 	[ProvideMenuResource("Menus.ctmenu", 1)]
-	public sealed class Regisstand : AsyncPackage
+	public sealed class RegisstandPackage : AsyncPackage
 	{
 		/// <summary>
 		/// RegisstandPackage GUID string.
@@ -49,7 +50,8 @@ namespace Regisstand
 			// When initialized asynchronously, the current thread may be a background thread at this point.
 			// Do any initialization that requires the UI thread after switching to the UI thread.
 			await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-		}
+      await SurroundMemberWithRegionCommand.InitializeAsync(this);
+    }
 
 		#endregion
 	}

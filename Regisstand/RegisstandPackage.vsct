@@ -2,19 +2,20 @@
 <CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<Extern href="stdidcmd.h"/>
 	<Extern href="vsshlids.h"/>
-	<Commands package="guidBreakpointWindowPackage">
+	<Commands package="guidRegisstandWindowPackage">
 		<Buttons>
-			<Button guid="guidVSBreakpointExtensionCmdSet" id="BreakpointWindowCommandId" priority="0x0100" type="Button">
-				<Parent guid="guidVSBreakpointExtensionCmdMenu" id="SubMenuGroup" />
+			<Button guid="guidRegisstandCmdSet" id="RegisstandWindowCommandId" priority="0x0100" type="Button">
+				<Parent guid="guidRegisstandCmdMenu" id="Menu" />
 				<Strings>
-					<ButtonText>Multi Rename oder sonst was</ButtonText>
+					<ButtonText>Surround members with regions</ButtonText>
+					<CommandName></CommandName>
 				</Strings>
 			</Button>
 		</Buttons>
 
 		<Menus>
-			<Menu guid="guidVSBreakpointExtensionCmdMenu" id="SubMenu" priority="0x0100" type="Menu">
-				<Parent guid="guidVSBreakpointExtensionCmdSet" id="MyContextMenuSolutionNodeGroup" />
+			<Menu guid="guidRegisstandCmdMenu" id="Menu" priority="0x0100" type="Menu">
+				<Parent guid="guidRegisstandCmdSet" id="MyContextMenuItemEditorGroup" />
 				<Strings>
 					<ButtonText>Timos Code Manager</ButtonText>
 				</Strings>
@@ -22,34 +23,30 @@
 		</Menus>
 
 		<Groups>
-			<Group guid="guidVSBreakpointExtensionCmdSet" id="MyToolsGroup" priority="0x0600">
-				<Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
-			</Group>
-			<Group guid="guidVSBreakpointExtensionCmdSet" id="MyContextMenuSolutionNodeGroup" priority="0x0600">
+			<Group guid="guidRegisstandCmdSet" id="MyContextMenuSolutionNodeGroup" priority="0x0600">
 				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE" />
 			</Group>
-			<Group guid="guidVSBreakpointExtensionCmdSet" id="MyContextMenuItemNodeGroup" priority="0x0000">
+			<Group guid="guidRegisstandCmdSet" id="MyContextMenuItemNodeGroup" priority="0x0000">
 				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
 			</Group>
-
-			<Group guid="guidVSBreakpointExtensionCmdMenu" id="SubMenuGroup" priority="0x0000">
-				<Parent guid="guidVSBreakpointExtensionCmdMenu" id="SubMenu"/>
+			<Group guid="guidRegisstandCmdSet" id="MyContextMenuItemEditorGroup" priority="0x0100">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
 			</Group>
+
 		</Groups>
 	</Commands>
 
 	<Symbols>
-		<GuidSymbol value="{8d838f1e-658d-4f78-86e4-75b1e66d91c8}" name="guidVSBreakpointExtensionCmdMenu">
-			<IDSymbol name="SubMenu" value="0x1100"/>
-			<IDSymbol name="SubMenuGroup" value="0x1150"/>
+		<GuidSymbol value="{8d838f1e-658d-4f78-86e4-75b1e66d91c8}" name="guidRegisstandCmdMenu">
+			<IDSymbol name="Menu" value="0x1100"/>
 		</GuidSymbol>
-		<GuidSymbol name="guidBreakpointWindowPackage" value="{33f9a5d7-1208-45c9-84e4-caae9e03b81b}" />
+		<GuidSymbol name="guidRegisstandWindowPackage" value="{75c915f9-e173-4fee-bb9c-3ab6304d4b1b}" />
 
-		<GuidSymbol name="guidVSBreakpointExtensionCmdSet" value="{e73b1379-6d9d-4057-adf1-aca51e35f7c4}">
-			<IDSymbol value="257" name="BreakpointWindowCommandId" />
+		<GuidSymbol name="guidRegisstandCmdSet" value="{e73b1379-6d9d-4057-adf1-aca51e35f7c4}">
+			<IDSymbol value="257" name="RegisstandWindowCommandId" />
 			<IDSymbol value="4126" name="MyContextMenuItemNodeGroup" />
 			<IDSymbol value="4127" name="MyContextMenuSolutionNodeGroup" />
-			<IDSymbol value="4128" name="MyToolsGroup" />
+			<IDSymbol value="1037" name="MyContextMenuItemEditorGroup" />
 		</GuidSymbol>
 	</Symbols>
 </CommandTable>
