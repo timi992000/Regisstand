@@ -1,75 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<Extern href="stdidcmd.h"/>
 	<Extern href="vsshlids.h"/>
-	<Commands package="guidYourPackageGuid">
-		<Menus>
-
-
-			<Menu guid="guidClassContextCmdSet" id="SubMenu" priority="0x0600" type="Menu">
-				<Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
-				<Strings>
-					<ButtonText>Alles von mir</ButtonText>
-				</Strings>
-			</Menu>
-			
-			<Menu guid="guidClassContextCmdSet" id="ClassContextMenu" priority="0x0100" type="Context">
-				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN"/>
-				<Strings>
-					<ButtonText>Mein Klassen-Menü</ButtonText>
-				</Strings>
-			</Menu>
-			<Menu guid="guidSolutionExplorerContextCmdSet" id="SolutionExplorerContextMenu" priority="0x0100" type="Context">
-				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
-				<Strings>
-					<ButtonText>Mein Solution Explorer-Menü</ButtonText>
-				</Strings>
-			</Menu>
-		</Menus>
-		<Groups>
-			<Group guid="guidClassContextCmdSet" id="ClassContextMenuGroup" priority="0x0100">
-				<Parent guid="guidClassContextCmdSet" id="ClassContextMenu"/>
-			</Group>
-			<Group guid="guidSolutionExplorerContextCmdSet" id="SolutionExplorerContextMenuGroup" priority="0x0100">
-				<Parent guid="guidSolutionExplorerContextCmdSet" id="SolutionExplorerContextMenu"/>
-			</Group>
-		</Groups>
+	<Commands package="guidBreakpointWindowPackage">
 		<Buttons>
-			<Button guid="guidClassContextCmdSet" id="MeinKlassenMenüItem" priority="0x0100" type="Button">
-				<Parent guid="guidClassContextCmdSet" id="ClassContextMenuGroup"/>
-				<CommandFlag>DynamicVisibility</CommandFlag>
+			<Button guid="guidVSBreakpointExtensionCmdSet" id="BreakpointWindowCommandId" priority="0x0100" type="Button">
+				<Parent guid="guidVSBreakpointExtensionCmdMenu" id="SubMenuGroup" />
 				<Strings>
-					<ButtonText>Mein Klassen-Menü Item</ButtonText>
-				</Strings>
-			</Button>
-			<Button guid="guidSolutionExplorerContextCmdSet" id="MeinSolutionExplorerMenüItem" priority="0x0100" type="Button">
-				<Parent guid="guidSolutionExplorerContextCmdSet" id="SolutionExplorerContextMenuGroup"/>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<Strings>
-					<ButtonText>Mein Solution Explorer-Menü Item</ButtonText>
+					<ButtonText>Multi Rename oder sonst was</ButtonText>
 				</Strings>
 			</Button>
 		</Buttons>
-	</Commands>
-	<Symbols>
-		<GuidSymbol name="guidYourPackageGuid" value="{75c915f9-e173-4fee-bb9c-3ab6304d4b1b}"/>
-		<GuidSymbol name="guidClassContextCmdSet" value="{d08e8c0e-dd7f-4a21-b4bb-6fff0a7365a8}"/>
-		<GuidSymbol name="guidSolutionExplorerContextCmdSet" value="{3e368081-8931-46cc-b3e9-a898004acd15}"/>
 
-		<GuidSymbol name="guidClassContextCmdSet" value="{4e251b10-e1a7-430b-9640-36d0c44c9cf5}">
-			<IDSymbol value="257" name="ClassContextMenu" />
-			<IDSymbol value="4126" name="SolutionExplorerContextMenu" />
-			<IDSymbol value="4127" name="ClassContextMenuGroup" />
-			<IDSymbol value="4128" name="ClassContextMenu" />
-			<IDSymbol value="4129" name="MeinKlassenMenüItem" />
+		<Menus>
+			<Menu guid="guidVSBreakpointExtensionCmdMenu" id="SubMenu" priority="0x0100" type="Menu">
+				<Parent guid="guidVSBreakpointExtensionCmdSet" id="MyContextMenuSolutionNodeGroup" />
+				<Strings>
+					<ButtonText>Timos Code Manager</ButtonText>
+				</Strings>
+			</Menu>
+		</Menus>
+
+		<Groups>
+			<Group guid="guidVSBreakpointExtensionCmdSet" id="MyToolsGroup" priority="0x0600">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+			</Group>
+			<Group guid="guidVSBreakpointExtensionCmdSet" id="MyContextMenuSolutionNodeGroup" priority="0x0600">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE" />
+			</Group>
+			<Group guid="guidVSBreakpointExtensionCmdSet" id="MyContextMenuItemNodeGroup" priority="0x0000">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
+			</Group>
+
+			<Group guid="guidVSBreakpointExtensionCmdMenu" id="SubMenuGroup" priority="0x0000">
+				<Parent guid="guidVSBreakpointExtensionCmdMenu" id="SubMenu"/>
+			</Group>
+		</Groups>
+	</Commands>
+
+	<Symbols>
+		<GuidSymbol value="{8d838f1e-658d-4f78-86e4-75b1e66d91c8}" name="guidVSBreakpointExtensionCmdMenu">
 			<IDSymbol name="SubMenu" value="0x1100"/>
 			<IDSymbol name="SubMenuGroup" value="0x1150"/>
 		</GuidSymbol>
+		<GuidSymbol name="guidBreakpointWindowPackage" value="{33f9a5d7-1208-45c9-84e4-caae9e03b81b}" />
 
-		<GuidSymbol name="guidSolutionExplorerContextCmdSet" value="{1f3f3d10-0e1f-4353-9c0c-02010d24540f}">
-			<IDSymbol value="4226" name="MeinSolutionExplorerMenüItem" />
-			<IDSymbol value="4227" name="SolutionExplorerContextMenuGroup" />
-			<IDSymbol value="4228" name="SolutionExplorerContextMenu" />
+		<GuidSymbol name="guidVSBreakpointExtensionCmdSet" value="{e73b1379-6d9d-4057-adf1-aca51e35f7c4}">
+			<IDSymbol value="257" name="BreakpointWindowCommandId" />
+			<IDSymbol value="4126" name="MyContextMenuItemNodeGroup" />
+			<IDSymbol value="4127" name="MyContextMenuSolutionNodeGroup" />
+			<IDSymbol value="4128" name="MyToolsGroup" />
 		</GuidSymbol>
 	</Symbols>
 </CommandTable>
