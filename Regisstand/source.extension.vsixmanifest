@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="Regisstand.eb668ed1-9fee-4615-813b-687f40b9b524" Version="1.0" Language="en-US" Publisher="Timo Schulze" />
+    <Identity Id="Regisstand.fefc20bf-d997-4993-a6a9-0b76198c27a8" Version="1.0" Language="en-US" Publisher="Timo Schulze" />
     <DisplayName>Regisstand</DisplayName>
     <Description>Empty VSIX Project.</Description>
   </Metadata>

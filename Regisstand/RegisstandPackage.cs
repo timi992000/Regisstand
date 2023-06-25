@@ -24,13 +24,16 @@ namespace Regisstand
 	/// </para>
 	/// </remarks>
 	[PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-	[Guid(RegisstandPackage.PackageGuidString)]
-	public sealed class RegisstandPackage : AsyncPackage
+	[Guid(PackageGuidString)]
+	[ProvideBindingPath]
+	[InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this Package for Help/About
+	[ProvideMenuResource("Menus.ctmenu", 1)]
+	public sealed class Regisstand : AsyncPackage
 	{
 		/// <summary>
 		/// RegisstandPackage GUID string.
 		/// </summary>
-		public const string PackageGuidString = "c0777b53-8f51-41c6-8f05-fbe374160b39";
+		public const string PackageGuidString = "75c915f9-e173-4fee-bb9c-3ab6304d4b1b";
 
 		#region Package Members
 

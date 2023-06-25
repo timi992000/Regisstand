@@ -1,7 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2010-07-15/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<Extern href="stdidcmd.h"/>
+	<Extern href="vsshlids.h"/>
 	<Commands package="guidYourPackageGuid">
 		<Menus>
+
+
+			<Menu guid="guidClassContextCmdSet" id="SubMenu" priority="0x0600" type="Menu">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+				<Strings>
+					<ButtonText>Alles von mir</ButtonText>
+				</Strings>
+			</Menu>
+			
 			<Menu guid="guidClassContextCmdSet" id="ClassContextMenu" priority="0x0100" type="Context">
 				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN"/>
 				<Strings>
@@ -39,10 +50,26 @@
 				</Strings>
 			</Button>
 		</Buttons>
-		<Symbols>
-			<GuidSymbol name="guidYourPackageGuid" value="c0777b53-8f51-41c6-8f05-fbe374160b39"/>
-			<GuidSymbol name="guidClassContextCmdSet" value="{e343d2ef-7e22-4f84-ab26-78b0ec001447}"/>
-			<GuidSymbol name="guidSolutionExplorerContextCmdSet" value="{cf98a944-9061-4053-9923-9b49ef4a096d}"/>
-		</Symbols>
 	</Commands>
+	<Symbols>
+		<GuidSymbol name="guidYourPackageGuid" value="{75c915f9-e173-4fee-bb9c-3ab6304d4b1b}"/>
+		<GuidSymbol name="guidClassContextCmdSet" value="{d08e8c0e-dd7f-4a21-b4bb-6fff0a7365a8}"/>
+		<GuidSymbol name="guidSolutionExplorerContextCmdSet" value="{3e368081-8931-46cc-b3e9-a898004acd15}"/>
+
+		<GuidSymbol name="guidClassContextCmdSet" value="{4e251b10-e1a7-430b-9640-36d0c44c9cf5}">
+			<IDSymbol value="257" name="ClassContextMenu" />
+			<IDSymbol value="4126" name="SolutionExplorerContextMenu" />
+			<IDSymbol value="4127" name="ClassContextMenuGroup" />
+			<IDSymbol value="4128" name="ClassContextMenu" />
+			<IDSymbol value="4129" name="MeinKlassenMenüItem" />
+			<IDSymbol name="SubMenu" value="0x1100"/>
+			<IDSymbol name="SubMenuGroup" value="0x1150"/>
+		</GuidSymbol>
+
+		<GuidSymbol name="guidSolutionExplorerContextCmdSet" value="{1f3f3d10-0e1f-4353-9c0c-02010d24540f}">
+			<IDSymbol value="4226" name="MeinSolutionExplorerMenüItem" />
+			<IDSymbol value="4227" name="SolutionExplorerContextMenuGroup" />
+			<IDSymbol value="4228" name="SolutionExplorerContextMenu" />
+		</GuidSymbol>
+	</Symbols>
 </CommandTable>
