@@ -46,6 +46,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\RenameFileTypesWithPrefixCommand.cs" />
     <Compile Include="Commands\SurroundMemberWithRegionCommand.cs" />
     <Compile Include="Core\PackageContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
