@@ -70,26 +70,39 @@ namespace Regisstand.Commands
             var prefix = __GetPrefix();
             var textDocument = PackageContext.Instance.DTE.ActiveDocument;
             var codeModel = textDocument.ProjectItem.FileCodeModel;
+            string latestCodeElementName;
             foreach (EnvDTE.CodeElement codeElement in codeModel.CodeElements)
             {
-                if (codeElement.Kind == EnvDTE.vsCMElement.vsCMElementNamespace)
+                try
                 {
+                    if (codeElement.Kind != EnvDTE.vsCMElement.vsCMElementNamespace)
+                        continue;
                     EnvDTE.CodeNamespace codeNamespace = (EnvDTE.CodeNamespace)codeElement;
                     foreach (EnvDTE.CodeElement nestedCodeElement in codeNamespace.Members)
                     {
-                        if (nestedCodeElement.Kind == EnvDTE.vsCMElement.vsCMElementClass)
+                        if (nestedCodeElement.Name.StartsWith(prefix))
+                            continue;
+                        else
                         {
-                            EnvDTE.CodeClass codeClass = (EnvDTE.CodeClass)nestedCodeElement;
-                            if (codeClass.Name.StartsWith(prefix))
-                                continue;
-                            else
-                            {
-                                codeClass.Name = prefix + codeClass.Name;
-                            }
+                            string newName = prefix + nestedCodeElement.Name;
+                            if (nestedCodeElement.Kind == vsCMElement.vsCMElementEnum)
+                                newName = "e" + prefix + nestedCodeElement.Name;
+                            else if (nestedCodeElement.Kind == vsCMElement.vsCMElementInterface)
+                                newName = "I" + prefix + nestedCodeElement.Name;
+                            __RenameSymbol(nestedCodeElement, newName);
                         }
                     }
                 }
+                catch (Exception ex)
+                {
+                }
             }
+        }
+
+        private void __RenameSymbol(CodeElement elem, string newName)
+        {
+            EnvDTE80.CodeElement2 codeElement = elem as EnvDTE80.CodeElement2;
+            codeElement.RenameSymbol(newName);
         }
 
         private string __GetPrefix()
@@ -103,12 +116,6 @@ namespace Regisstand.Commands
                 }
                 return "";
             }
-        }
-
-        public void __RenameClass(ProjectItem projectItem, string newClassName)
-        {
-            CodeClass codeClass = projectItem.FileCodeModel.CodeElements.Item(1) as CodeClass;
-            codeClass.Name = newClassName;
         }
     }
 }
