@@ -4,6 +4,14 @@
 	<Extern href="vsshlids.h"/>
 	<Commands package="guidRegisstandWindowPackage">
 		<Buttons>
+
+			<Button guid="guidRegisstandCmdSet" id="CompressCSClassesToFileByPathCommandId" priority="0x0100" type="Button">
+				<Parent guid="guidRegisstandCmdSet" id="MyContextMenuItemEditorGroup" />
+				<Strings>
+					<ButtonText>Compress all cs files by path to one</ButtonText>
+				</Strings>
+			</Button>
+			
 			<Button guid="guidRegisstandCmdSet" id="SurroundMemberWithRegionCommandId" priority="0x0100" type="Button">
 				<Parent guid="guidRegisstandCmdSet" id="MyContextMenuItemEditorGroup" />
 				<Strings>
@@ -41,6 +49,7 @@
 		<GuidSymbol name="guidRegisstandWindowPackage" value="{75c915f9-e173-4fee-bb9c-3ab6304d4b1b}" />
 
 		<GuidSymbol name="guidRegisstandCmdSet" value="{e73b1379-6d9d-4057-adf1-aca51e35f7c4}">
+			<IDSymbol value="256" name="CompressCSClassesToFileByPathCommandId" />
 			<IDSymbol value="257" name="SurroundMemberWithRegionCommandId" />
 			<IDSymbol value="258" name="RenameTypesCommandId" />
 			<IDSymbol value="4126" name="MyContextMenuItemNodeGroup" />

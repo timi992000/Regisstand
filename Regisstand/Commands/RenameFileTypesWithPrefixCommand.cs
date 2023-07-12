@@ -110,7 +110,5 @@ namespace Regisstand.Commands
             CodeClass codeClass = projectItem.FileCodeModel.CodeElements.Item(1) as CodeClass;
             codeClass.Name = newClassName;
         }
-
-
     }
 }
