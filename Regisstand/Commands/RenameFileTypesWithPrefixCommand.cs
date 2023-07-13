@@ -1,6 +1,7 @@
 ﻿using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Regisstand.Core;
+using Regisstand.Extender;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -70,7 +71,6 @@ namespace Regisstand.Commands
             var prefix = __GetPrefix();
             var textDocument = PackageContext.Instance.DTE.ActiveDocument;
             var codeModel = textDocument.ProjectItem.FileCodeModel;
-            string latestCodeElementName;
             foreach (EnvDTE.CodeElement codeElement in codeModel.CodeElements)
             {
                 try
@@ -80,29 +80,23 @@ namespace Regisstand.Commands
                     EnvDTE.CodeNamespace codeNamespace = (EnvDTE.CodeNamespace)codeElement;
                     foreach (EnvDTE.CodeElement nestedCodeElement in codeNamespace.Members)
                     {
+                        if (nestedCodeElement.Kind == vsCMElement.vsCMElementEnum)
+                            prefix = "e" + prefix;
+                        else if (nestedCodeElement.Kind == vsCMElement.vsCMElementInterface)
+                            prefix = "I" + prefix;
+                        string newName = prefix + nestedCodeElement.Name;
                         if (nestedCodeElement.Name.StartsWith(prefix))
                             continue;
                         else
                         {
-                            string newName = prefix + nestedCodeElement.Name;
-                            if (nestedCodeElement.Kind == vsCMElement.vsCMElementEnum)
-                                newName = "e" + prefix + nestedCodeElement.Name;
-                            else if (nestedCodeElement.Kind == vsCMElement.vsCMElementInterface)
-                                newName = "I" + prefix + nestedCodeElement.Name;
-                            __RenameSymbol(nestedCodeElement, newName);
+                            nestedCodeElement.RenameCodeElement(newName);
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             }
-        }
-
-        private void __RenameSymbol(CodeElement elem, string newName)
-        {
-            EnvDTE80.CodeElement2 codeElement = elem as EnvDTE80.CodeElement2;
-            codeElement.RenameSymbol(newName);
         }
 
         private string __GetPrefix()

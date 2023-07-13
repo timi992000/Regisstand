@@ -51,6 +51,7 @@
     <Compile Include="Commands\SurroundMemberWithRegionCommand.cs" />
     <Compile Include="Core\InputBox.cs" />
     <Compile Include="Core\PackageContext.cs" />
+    <Compile Include="Extender\CodeElementExtender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisstandPackage.cs" />
   </ItemGroup>

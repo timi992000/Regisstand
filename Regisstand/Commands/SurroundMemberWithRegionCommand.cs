@@ -1,6 +1,7 @@
 ﻿using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Regisstand.Core;
+using Regisstand.Extender;
 using System;
 using System.ComponentModel.Design;
 using System.Threading.Tasks;
@@ -61,7 +62,6 @@ namespace Regisstand.Commands
         {
             var textDocument = PackageContext.Instance.DTE.ActiveDocument;
             var codeModel = textDocument.ProjectItem.FileCodeModel;
-            string latestCodeElementName;
             foreach (EnvDTE.CodeElement codeElement in codeModel.CodeElements)
             {
                 try
@@ -80,12 +80,14 @@ namespace Regisstand.Commands
                             var castedCodeClass = (EnvDTE.CodeClass)nestedCodeElement;
                             foreach (var member in castedCodeClass.Members)
                             {
-                                __GenerateCodeElementRegion(member as CodeElement);
+                                var parsedCodeElement = member as CodeElement;
+                                parsedCodeElement.CheckCodeElementAndRenameIfNeeded();
+                                //__GenerateCodeElementRegion(parsedCodeElement);
                             }
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             }
