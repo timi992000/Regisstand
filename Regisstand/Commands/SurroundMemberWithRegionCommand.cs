@@ -82,7 +82,7 @@ namespace Regisstand.Commands
                             {
                                 var parsedCodeElement = member as CodeElement;
                                 parsedCodeElement.CheckCodeElementAndRenameIfNeeded();
-                                //__GenerateCodeElementRegion(parsedCodeElement);
+                                __GenerateCodeElementRegion(parsedCodeElement);
                             }
                         }
                     }
