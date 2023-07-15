@@ -47,6 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Commands\CompressCSClassesToFileByPathCommand.cs" />
+    <Compile Include="Commands\RenameMembersAndSortCommand.cs" />
     <Compile Include="Commands\RenameFileTypesWithPrefixCommand.cs" />
     <Compile Include="Commands\SurroundMemberWithRegionCommand.cs" />
     <Compile Include="Core\InputBox.cs" />

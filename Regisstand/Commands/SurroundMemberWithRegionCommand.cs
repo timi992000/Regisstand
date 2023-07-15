@@ -60,37 +60,13 @@ namespace Regisstand.Commands
 
         private void __SurroundAllCodeElementsWithRegion()
         {
-            var textDocument = PackageContext.Instance.DTE.ActiveDocument;
-            var codeModel = textDocument.ProjectItem.FileCodeModel;
-            foreach (EnvDTE.CodeElement codeElement in codeModel.CodeElements)
-            {
-                try
+            CodeElementExtender.ActionOnAllCodeElementsInDocument
+                ((member) =>
                 {
-                    if (codeElement.Kind != EnvDTE.vsCMElement.vsCMElementNamespace)
-                        continue;
-                    EnvDTE.CodeNamespace codeNamespace = (EnvDTE.CodeNamespace)codeElement;
-                    foreach (EnvDTE.CodeElement nestedCodeElement in codeNamespace.Members)
-                    {
-                        bool hasRegion = false;
-                        //Find a way to check if region already exists
-                        if (hasRegion || nestedCodeElement.Kind != vsCMElement.vsCMElementClass)
-                            continue;
-                        else
-                        {
-                            var castedCodeClass = (EnvDTE.CodeClass)nestedCodeElement;
-                            foreach (var member in castedCodeClass.Members)
-                            {
-                                var parsedCodeElement = member as CodeElement;
-                                parsedCodeElement.CheckCodeElementAndRenameIfNeeded();
-                                __GenerateCodeElementRegion(parsedCodeElement);
-                            }
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                }
-            }
+                    var parsedCodeElement = member as CodeElement;
+                    parsedCodeElement.CheckCodeElementAndRenameIfNeeded();
+                    __GenerateCodeElementRegion(parsedCodeElement);
+                });
         }
 
         private void __GenerateCodeElementRegion(CodeElement codeElement)

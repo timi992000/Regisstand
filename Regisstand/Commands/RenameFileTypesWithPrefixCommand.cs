@@ -80,12 +80,13 @@ namespace Regisstand.Commands
                     EnvDTE.CodeNamespace codeNamespace = (EnvDTE.CodeNamespace)codeElement;
                     foreach (EnvDTE.CodeElement nestedCodeElement in codeNamespace.Members)
                     {
+                        var newPrefix = prefix;
                         if (nestedCodeElement.Kind == vsCMElement.vsCMElementEnum)
-                            prefix = "e" + prefix;
+                            newPrefix = "e" + prefix;
                         else if (nestedCodeElement.Kind == vsCMElement.vsCMElementInterface)
-                            prefix = "I" + prefix;
-                        string newName = prefix + nestedCodeElement.Name;
-                        if (nestedCodeElement.Name.StartsWith(prefix))
+                            newPrefix = "I" + prefix;
+                        var newName = newPrefix + nestedCodeElement.Name;
+                        if (nestedCodeElement.Name.StartsWith(newPrefix))
                             continue;
                         else
                         {

@@ -53,6 +53,7 @@ namespace Regisstand
             await SurroundMemberWithRegionCommand.InitializeAsync(this);
             await RenameFileTypesWithPrefixCommand.InitializeAsync(this);
             await CompressCSClassesToFileByPathCommand.InitializeAsync(this);
+            await RenameMembersAndSortCommand.InitializeAsync(this);
         }
 
         #endregion
