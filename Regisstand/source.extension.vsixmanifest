@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="Regisstand.fefc20bf-d997-4993-a6a9-0b76198c27a8" Version="0.1" Language="en-US" Publisher="Timo Schulze" />
+        <Identity Id="Regisstand.fefc20bf-d997-4993-a6a9-0b76198c27a8" Version="0.2" Language="en-US" Publisher="Timo Schulze" />
         <DisplayName>Regisstand</DisplayName>
-        <Description xml:space="preserve">Empty VSIX Project.</Description>
+        <Description xml:space="preserve">Regisstand (Region Assistant) is a first version of a visual studio extension to refractor your code easier.</Description>
+        <MoreInfo>https://github.com/timi992000/Regisstand</MoreInfo>
+        <GettingStartedGuide>https://github.com/timi992000/Regisstand</GettingStartedGuide>
         <Preview>true</Preview>
     </Metadata>
     <Installation>
