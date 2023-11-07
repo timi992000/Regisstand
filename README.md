@@ -4,7 +4,8 @@ Regisstand (**Reg**ion Ass**istant**) is a first version of a visual studio exte
 
 `All functions are available by right-clicking in the editor of a file`
 
-![rtuUJnAkoR](https://github.com/timi992000/Regisstand/assets/77628993/2b121de2-3152-4165-844f-343e87ed515b)
+![rtuUJnAkoR](https://github.com/timi992000/Regisstand/assets/77628993/aa4dd94f-85e8-4225-a65c-065920c1db52)
+
 
 # Installation
 
