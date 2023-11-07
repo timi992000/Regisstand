@@ -49,6 +49,9 @@ namespace Regisstand.Commands
         {
             __RenameMembers();
             __SortMembers();
+            PackageContext.Instance.DTE.ExecuteCommand("Edit.FormatDocument");
+            __SurroundMembers();
+            PackageContext.Instance.DTE.ExecuteCommand("Edit.FormatDocument");
         }
 
         private void __RenameMembers()
@@ -67,6 +70,11 @@ namespace Regisstand.Commands
             {
                 codeClass.SortClassMembers();
             });
+        }
+
+        private void __SurroundMembers()
+        {
+            CodeElementExtender.SurroundWithRegionsInCurrentDocument();
         }
 
     }

@@ -48,39 +48,9 @@ namespace Regisstand.Commands
 
         private void DoAction(object sender, EventArgs e)
         {
-            __SurroundMembersByRegions();
+            CodeElementExtender.SurroundWithRegionsInCurrentDocument();
+            PackageContext.Instance.DTE.ExecuteCommand("Edit.FormatDocument");
         }
 
-        private void __SurroundMembersByRegions()
-        {
-            if (PackageContext.Instance == null || PackageContext.Instance.CurrentDocument == null)
-                return;
-            __SurroundAllCodeElementsWithRegion();
-        }
-
-        private void __SurroundAllCodeElementsWithRegion()
-        {
-            CodeElementExtender.ActionOnAllCodeElementsInDocument
-                ((member) =>
-                {
-                    var parsedCodeElement = member as CodeElement;
-                    parsedCodeElement.CheckCodeElementAndRenameIfNeeded();
-                    __GenerateCodeElementRegion(parsedCodeElement);
-                });
-        }
-
-        private void __GenerateCodeElementRegion(CodeElement codeElement)
-        {
-            TextPoint start = codeElement.StartPoint;
-            var startTabPosition = start.DisplayColumn - 1;
-            TextPoint end = codeElement.EndPoint;
-            var endTabPosition = end.DisplayColumn - 2;
-
-            EditPoint startPoint = start.CreateEditPoint();
-            EditPoint endPoint = end.CreateEditPoint();
-
-            startPoint.Insert($"#region [{codeElement.Name}]\n{new string(' ', startTabPosition)}");
-            endPoint.Insert($"\n{new string(' ', endTabPosition)}#endregion");
-        }
     }
 }
